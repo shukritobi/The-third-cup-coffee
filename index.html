@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The 3rd Cup | Coffee, Matcha & Event Drinks</title>
+  <meta name="description" content="Coffee and non-coffee drinks made around Cyberjaya, Putrajaya and Dengkil. Discover signature drinks or invite The 3rd Cup to your next event." />
+  <meta name="theme-color" content="#f7f0e7" />
+  <meta property="og:title" content="The 3rd Cup | Two is never enough" />
+  <meta property="og:description" content="Coffee, matcha, chocolate and event drinks around Cyberjaya, Putrajaya and Dengkil." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f0e7;
+      --paper: #fffaf4;
+      --brown: #5f3927;
+      --brown-2: #8a5d45;
+      --ink: #27221f;
+      --muted: #706760;
+      --matcha: #7d8b54;
+      --matcha-soft: #dce3c5;
+      --peach: #e8b48f;
+      --line: rgba(95, 57, 39, .16);
+      --shadow: 0 24px 80px rgba(75, 45, 29, .12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(232,180,143,.22), transparent 28%),
+        radial-gradient(circle at 94% 14%, rgba(125,139,84,.16), transparent 26%),
+        var(--cream);
+      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+
+    .shell { width: min(1180px, calc(100% - 36px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--brown-2);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(247, 240, 231, .82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(95,57,39,.08);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      width: 46px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(95,57,39,.25);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,250,244,.75);
+    }
+    .brand-mark svg { width: 27px; height: 27px; color: var(--brown); }
+    .brand-copy strong { display: block; letter-spacing: .12em; font-size: .86rem; }
+    .brand-copy span { display: block; color: var(--brown-2); font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 26px; }
+    nav a { text-decoration: none; font-size: .92rem; font-weight: 600; color: #4f4742; }
+    nav a:hover { color: var(--brown); }
+    .nav-cta { padding: 11px 18px; border-radius: 999px; background: var(--brown); color: white; }
+    .menu-btn { display: none; border: 0; background: transparent; font-size: 1.45rem; }
+
+    .hero {
+      min-height: 780px;
+      display: grid;
+      align-items: center;
+      padding: 76px 0 86px;
+      position: relative;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; gap: 66px; align-items: center; }
+    h1, h2 { font-family: "Playfair Display", Georgia, serif; line-height: 1.03; margin: 0; font-weight: 600; }
+    h1 { font-size: clamp(3.6rem, 7.7vw, 7.3rem); letter-spacing: -.055em; max-width: 760px; }
+    h1 em { color: var(--brown); font-weight: 600; }
+    .hero p { max-width: 610px; font-size: clamp(1.04rem, 1.6vw, 1.22rem); color: var(--muted); margin: 28px 0 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--brown); color: white; box-shadow: 0 12px 28px rgba(95,57,39,.22); }
+    .btn-light { background: rgba(255,250,244,.8); border-color: var(--line); }
+    .micro-proof { display: flex; flex-wrap: wrap; gap: 9px 18px; margin-top: 24px; color: #5e554f; font-size: .88rem; }
+    .micro-proof span::before { content: "✦"; color: var(--matcha); margin-right: 7px; }
+
+    .hero-art { position: relative; min-height: 600px; }
+    .hero-card {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      border: 8px solid rgba(255,250,244,.75);
+      background: var(--paper);
+    }
+    .hero-card img { height: 100%; object-fit: cover; }
+    .hero-card.main { width: 74%; height: 520px; right: 2%; top: 38px; transform: rotate(2.5deg); }
+    .hero-card.side { width: 44%; height: 310px; left: 0; bottom: 0; transform: rotate(-6deg); }
+    .floating-note {
+      position: absolute;
+      left: 3%;
+      top: 18px;
+      z-index: 5;
+      width: 172px;
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--matcha-soft);
+      color: #4f5937;
+      box-shadow: 0 18px 50px rgba(62,71,41,.13);
+      transform: rotate(-3deg);
+    }
+    .floating-note strong { font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; display: block; }
+    .floating-note span { font-size: .78rem; }
+    .location-chip {
+      position: absolute;
+      right: -8px;
+      bottom: 55px;
+      z-index: 5;
+      background: var(--paper);
+      padding: 13px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 16px 40px rgba(73,45,30,.11);
+    }
+
+    section { padding: 98px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 38px; }
+    h2 { font-size: clamp(2.8rem, 5.6vw, 5rem); letter-spacing: -.04em; }
+    .section-head p { max-width: 470px; color: var(--muted); margin: 0 0 7px; }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .drink-card {
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255,250,244,.75);
+      border: 1px solid var(--line);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .drink-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .drink-img { height: 250px; overflow: hidden; background: #d8c5b6; }
+    .drink-img img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .drink-card:hover .drink-img img { transform: scale(1.045); }
+    .drink-body { padding: 24px 22px 25px; display: flex; flex-direction: column; flex: 1; }
+    .drink-type { font-size: .72rem; text-transform: uppercase; letter-spacing: .15em; color: var(--brown-2); font-weight: 700; }
+    .drink-body h3 { margin: 7px 0 9px; font-family: "Playfair Display", Georgia, serif; font-size: 1.58rem; line-height: 1.1; }
+    .drink-body p { color: var(--muted); font-size: .91rem; margin: 0 0 18px; }
+    .drink-body a { margin-top: auto; font-weight: 700; text-decoration: none; color: var(--brown); }
+
+    .events-wrap {
+      background: var(--brown);
+      color: #fff8ef;
+      border-radius: 44px;
+      padding: clamp(34px, 6vw, 76px);
+      position: relative;
+      overflow: hidden;
+    }
+    .events-wrap::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      right: -120px;
+      top: -120px;
+      box-shadow: 0 0 0 55px rgba(255,255,255,.035), 0 0 0 110px rgba(255,255,255,.025);
+    }
+    .events-grid { display: grid; grid-template-columns: 1fr .95fr; gap: 64px; position: relative; z-index: 2; }
+    .events-wrap h2 { max-width: 630px; }
+    .events-wrap p { color: rgba(255,248,239,.75); max-width: 600px; }
+    .event-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+    .event-pill { padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); font-size: .9rem; }
+    .event-form { background: #fff8ef; color: var(--ink); padding: 26px; border-radius: 28px; box-shadow: 0 26px 70px rgba(0,0,0,.22); }
+    .event-form h3 { margin: 0 0 4px; font-family: "Playfair Display", Georgia, serif; font-size: 1.65rem; }
+    .event-form > p { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: .75rem; font-weight: 700; margin: 0 0 5px; color: #5e524a; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid rgba(95,57,39,.17);
+      border-radius: 13px;
+      background: white;
+      padding: 12px 13px;
+      outline: none;
+    }
+    .field textarea { min-height: 88px; resize: vertical; }
+    .event-form .btn { width: 100%; border: 0; }
+    .form-note { font-size: .72rem; color: var(--muted); text-align: center; margin: 10px 0 0; }
+
+    .story-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 64px; align-items: center; }
+    .story-visual { min-height: 570px; border-radius: 38px; overflow: hidden; position: relative; box-shadow: var(--shadow); }
+    .story-visual img { height: 100%; min-height: 570px; object-fit: cover; }
+    .story-visual::after { content: "Two is never enough"; position: absolute; left: 22px; bottom: 22px; padding: 12px 17px; border-radius: 999px; background: rgba(255,250,244,.9); color: var(--brown); font-weight: 700; }
+    .story-copy p { color: var(--muted); font-size: 1.03rem; max-width: 640px; }
+    .story-points { display: grid; gap: 14px; margin: 28px 0 0; }
+    .story-point { display: grid; grid-template-columns: 42px 1fr; gap: 13px; align-items: start; }
+    .story-point .num { width: 42px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: var(--matcha-soft); color: #58633e; font-weight: 700; }
+    .story-point strong { display: block; margin-top: 2px; }
+    .story-point span { color: var(--muted); font-size: .9rem; }
+
+    .area-band {
+      padding: 27px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .area-line { display: flex; gap: 28px; align-items: center; justify-content: center; flex-wrap: wrap; color: var(--brown); font-family: "Playfair Display", Georgia, serif; font-size: clamp(1.35rem, 3vw, 2.2rem); }
+    .area-line i { font-family: "DM Sans", sans-serif; color: var(--matcha); font-style: normal; font-size: .8em; }
+
+    .faq { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); padding: 19px 0; }
+    summary { cursor: pointer; list-style: none; font-weight: 700; display: flex; justify-content: space-between; gap: 20px; }
+    summary::after { content: "+"; color: var(--brown); font-size: 1.2rem; }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); margin: 12px 0 3px; }
+
+    .final-cta {
+      padding: 40px 0 100px;
+    }
+    .final-box {
+      text-align: center;
+      padding: 72px 24px;
+      border-radius: 42px;
+      background: var(--matcha-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-box h2 { max-width: 820px; margin: 0 auto 18px; }
+    .final-box p { max-width: 600px; margin: 0 auto 28px; color: #5d624d; }
+    .final-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+
+    footer { padding: 34px 0 44px; border-top: 1px solid var(--line); }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; }
+    .footer-grid p { color: var(--muted); margin: 9px 0 0; font-size: .84rem; }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .socials a { text-decoration: none; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; font-size: .84rem; background: rgba(255,250,244,.6); }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 18px);
+      background: var(--ink);
+      color: white;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: .83rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: .22s ease;
+      z-index: 99;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 980px) {
+      .hero { min-height: auto; }
+      .hero-grid, .events-grid, .story-grid, .faq { grid-template-columns: 1fr; }
+      .hero-art { min-height: 580px; max-width: 680px; width: 100%; margin: 0 auto; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .events-grid { gap: 38px; }
+      .faq { gap: 28px; }
+    }
+
+    @media (max-width: 740px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .nav { min-height: 68px; }
+      nav {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        top: 76px;
+        padding: 18px;
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: .2s ease;
+      }
+      nav.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+      nav a { padding: 8px 6px; }
+      .nav-cta { text-align: center; }
+      .menu-btn { display: block; }
+      .hero { padding-top: 55px; }
+      h1 { font-size: clamp(3.25rem, 15vw, 5.4rem); }
+      .hero-grid { gap: 22px; }
+      .hero-art { min-height: 470px; }
+      .hero-card.main { height: 400px; width: 77%; }
+      .hero-card.side { height: 235px; width: 48%; }
+      .floating-note { width: 145px; padding: 14px; }
+      .location-chip { right: 0; bottom: 25px; font-size: .75rem; }
+      section { padding: 72px 0; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 15px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .drink-card { min-height: 0; }
+      .drink-img { height: 300px; }
+      .events-wrap { border-radius: 30px; }
+      .event-list { grid-template-columns: 1fr; }
+      .story-visual, .story-visual img { min-height: 440px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .socials { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="The 3rd Cup home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M34 10c-7 1-12 8-11 15 1 8 9 13 16 10 6-3 9-10 6-16-2-5-7-8-11-9Z" stroke="currentColor" stroke-width="3"/>
+            <path d="M28 19c7-3 15 2 15 10 0 9-10 15-18 11-10-5-11-19-2-26 9-8 24-4 29 7 6 13-1 28-14 33-14 5-30-2-36-16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy"><strong>THE THIRD CUP</strong><span>Two is never enough</span></span>
+      </a>
+      <nav id="navMenu">
+        <a href="#drinks">Drinks</a>
+        <a href="#events">Events</a>
+        <a href="#story">Our vibe</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">Message us</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Coffee, matcha & more</span>
+          <h1>Your day deserves a <em>third cup.</em></h1>
+          <p>Thoughtful coffee and non-coffee drinks made for slow mornings, busy afternoons and the moments worth celebrating.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">Order through Instagram ↗</a>
+            <a class="btn btn-light" href="#events">Book us for an event</a>
+          </div>
+          <div class="micro-proof">
+            <span>Soft launch menu</span>
+            <span>Event & collaboration enquiries</span>
+            <span>Serving 43900 and nearby</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Coffee and matcha drinks">
+          <div class="floating-note"><strong>Made to sip slowly.</strong><span>Freshly prepared, beautifully balanced.</span></div>
+          <div class="hero-card main"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1200&q=86" alt="Iced coffee in a glass" /></div>
+          <div class="hero-card side"><img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=900&q=86" alt="Fresh matcha drink" /></div>
+          <div class="location-chip">Cyberjaya · Putrajaya · Dengkil</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="drinks">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="eyebrow">What we pour</span><h2>Find your cup.</h2></div>
+          <p>A focused soft-launch menu built around coffee, matcha, premium chocolate and rotating signatures. Message us for the latest availability and prices.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="drink-card">
+            <div class="drink-img"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=900&q=84" alt="Chocolate iced drink" /></div>
+            <div class="drink-body">
+              <span class="drink-type">Chocolate signature</span>
+              <h3>Melbourne Ice Choc</h3>
+              <p>Lighter than a classic French chocolate, with a rich Belgian chocolate flavour and a subtle bittersweet finish.</p>
+              <a href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">Ask about this drink →</a>
+            </div>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-img"><img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=900&q=84" alt="Iced matcha latte" /></div>
+            <div class="drink-body">
+              <span class="drink-type">Non-coffee</span>
+              <h3>Matcha favourites</h3>
+              <p>Earthy, creamy and refreshing, prepared for matcha lovers who prefer a smoother everyday cup.</p>
+              <a href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">See the latest matcha →</a>
+            </div>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-img"><img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=900&q=84" alt="Cold coffee drink" /></div>
+            <div class="drink-body">
+              <span class="drink-type">Coffee</span>
+              <h3>Coffee favourites</h3>
+              <p>Comforting coffee classics and chilled creations for your morning reset or afternoon pick-me-up.</p>
+              <a href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">Ask for today’s coffee →</a>
+            </div>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=900&q=84" alt="Specialty drink on a cafe table" /></div>
+            <div class="drink-body">
+              <span class="drink-type">Limited rotation</span>
+              <h3>Seasonal signatures</h3>
+              <p>Playful small-batch drinks inspired by places, moods and whatever tastes especially good that week.</p>
+              <a href="https://www.threads.com/@thethirdcup.my" target="_blank" rel="noopener">Follow new drops →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="shell events-wrap">
+        <div class="events-grid">
+          <div>
+            <span class="eyebrow" style="color:#e7c2a8">Events & collaborations</span>
+            <h2>A drinks corner your guests will remember.</h2>
+            <p>Bring The 3rd Cup to intimate celebrations, office gatherings, community events or brand collaborations. Tell us your date, guest count and preferred drinks, then we will shape a setup around your event.</p>
+            <div class="event-list">
+              <div class="event-pill">Birthdays & private celebrations</div>
+              <div class="event-pill">Office meetings & team days</div>
+              <div class="event-pill">Pop-ups & brand launches</div>
+              <div class="event-pill">Community & creator collaborations</div>
+            </div>
+          </div>
+
+          <form class="event-form" id="eventForm">
+            <h3>Start an event enquiry</h3>
+            <p>We will copy your enquiry, then open Instagram so you can paste and send it.</p>
+            <div class="field"><label for="eventType">Event type</label><select id="eventType"><option>Private celebration</option><option>Corporate / office event</option><option>Pop-up / market</option><option>Brand collaboration</option><option>Other</option></select></div>
+            <div class="field"><label for="eventDate">Preferred date</label><input id="eventDate" type="date" /></div>
+            <div class="field"><label for="guestCount">Estimated guests</label><input id="guestCount" type="number" min="1" placeholder="e.g. 50" /></div>
+            <div class="field"><label for="eventNote">Anything else?</label><textarea id="eventNote" placeholder="Venue, timing, drinks you are interested in..."></textarea></div>
+            <button class="btn btn-primary" type="submit">Copy enquiry & open Instagram</button>
+            <p class="form-note">No information is stored on this website.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="shell story-grid">
+        <div class="story-visual"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1200&q=86" alt="Coffee being prepared" /></div>
+        <div class="story-copy">
+          <span class="eyebrow">The 3rd Cup feeling</span>
+          <h2>Not just a drink, a little pause in your day.</h2>
+          <p>The brand is built around simple pleasures: a cup that looks good, tastes balanced and gives people a reason to stay a little longer. Coffee drinker or not, there should be something here for you.</p>
+          <div class="story-points">
+            <div class="story-point"><span class="num">01</span><div><strong>Coffee and non-coffee</strong><span>A menu that welcomes espresso lovers, matcha fans and chocolate people.</span></div></div>
+            <div class="story-point"><span class="num">02</span><div><strong>Soft-launch discovery</strong><span>New ideas can be tested, refined and introduced through social drops.</span></div></div>
+            <div class="story-point"><span class="num">03</span><div><strong>Built for sharing</strong><span>Available for individual orders, events and creative collaborations.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="area-band">
+      <div class="shell area-line"><span>Cyberjaya</span><i>✦</i><span>Putrajaya</span><i>✦</i><span>Dengkil</span><i>✦</i><span>43900</span></div>
+    </div>
+
+    <section id="faq">
+      <div class="shell faq">
+        <div><span class="eyebrow">Quick answers</span><h2>Before your first sip.</h2></div>
+        <div class="faq-list">
+          <details open><summary>How do I place an order?</summary><p>Send a message to @thethirdcup.my on Instagram for the current menu, pricing, order slots and pickup or delivery arrangements.</p></details>
+          <details><summary>Where do you serve?</summary><p>The social profile highlights Cyberjaya, Putrajaya and Dengkil, with the business listed under postcode 43900. Confirm your exact location before ordering.</p></details>
+          <details><summary>Can I book The 3rd Cup for an event?</summary><p>Yes. Share your event date, location, guest count and preferred drink direction so a suitable setup can be discussed.</p></details>
+          <details><summary>Do you only serve coffee?</summary><p>No. The 3rd Cup also features non-coffee options, including matcha and premium chocolate drinks.</p></details>
+          <details><summary>Is the full menu available every day?</summary><p>The business is in soft launch, so selections and availability may rotate. Message the team for the latest menu.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-box">
+        <span class="eyebrow">Ready when you are</span>
+        <h2>One cup for now, maybe a third for later.</h2>
+        <p>Message The 3rd Cup for the latest menu, event availability or a collaboration idea.</p>
+        <div class="final-actions">
+          <a class="btn btn-primary" href="https://ig.me/m/thethirdcup.my" target="_blank" rel="noopener">Message on Instagram</a>
+          <a class="btn btn-light" href="https://www.threads.com/@thethirdcup.my" target="_blank" rel="noopener">Follow on Threads</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M34 10c-7 1-12 8-11 15 1 8 9 13 16 10 6-3 9-10 6-16-2-5-7-8-11-9Z" stroke="currentColor" stroke-width="3"/><path d="M28 19c7-3 15 2 15 10 0 9-10 15-18 11-10-5-11-19-2-26 9-8 24-4 29 7 6 13-1 28-14 33-14 5-30-2-36-16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+          <span class="brand-copy"><strong>THE THIRD CUP</strong><span>Two is never enough</span></span>
+        </a>
+        <p>Coffee and non-coffee drinks · Events & collaborations · Registration: NS0325337-D</p>
+      </div>
+      <div class="socials"><a href="https://www.instagram.com/thethirdcup.my/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.com/@thethirdcup.my" target="_blank" rel="noopener">Threads</a></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status">Enquiry copied. Opening Instagram...</div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '×' : '☰';
+    });
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+
+    const form = document.getElementById('eventForm');
+    const toast = document.getElementById('toast');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const type = document.getElementById('eventType').value;
+      const date = document.getElementById('eventDate').value || 'Not confirmed yet';
+      const guests = document.getElementById('guestCount').value || 'Not confirmed yet';
+      const note = document.getElementById('eventNote').value.trim() || 'No additional notes';
+      const message = `Hi The 3rd Cup! I would like to enquire about an event.\n\nEvent type: ${type}\nPreferred date: ${date}\nEstimated guests: ${guests}\nDetails: ${note}\n\nCould you share the available packages and next steps?`;
+      try { await navigator.clipboard.writeText(message); } catch (_) {}
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+      setTimeout(() => window.open('https://ig.me/m/thethirdcup.my', '_blank', 'noopener'), 450);
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "The 3rd Cup",
+    "alternateName": "The Third Cup",
+    "description": "Coffee and non-coffee drinks, event service and collaborations around Cyberjaya, Putrajaya and Dengkil.",
+    "areaServed": ["Cyberjaya", "Putrajaya", "Dengkil"],
+    "sameAs": [
+      "https://www.instagram.com/thethirdcup.my/",
+      "https://www.threads.com/@thethirdcup.my"
+    ]
+  }
+  </script>
+</body>
+</html>
